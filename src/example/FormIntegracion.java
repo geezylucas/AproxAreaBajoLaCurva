@@ -5,11 +5,46 @@
  */
 package example;
 
+import java.awt.BorderLayout;
+import java.awt.Color;
+import java.awt.Dimension;
+import javax.swing.BorderFactory;
+import javax.swing.table.DefaultTableModel;
+import org.jfree.chart.ChartPanel;
+import org.jfree.chart.JFreeChart;
+import org.jfree.chart.axis.NumberAxis;
+import org.jfree.chart.block.BlockBorder;
+import org.jfree.chart.plot.XYPlot;
+import org.jfree.chart.renderer.xy.XYLineAndShapeRenderer;
+import org.jfree.data.xy.XYDataset;
+import org.jfree.data.xy.XYSeries;
+import org.jfree.data.xy.XYSeriesCollection;
+import org.mariuszgromada.math.mxparser.Argument;
+import org.mariuszgromada.math.mxparser.Expression;
+
 /**
  *
  * @author geezylucas
  */
 public class FormIntegracion extends javax.swing.JFrame {
+
+    private int k;
+    private int c;
+    private int n;
+    private double redon;
+    private int i;
+    private double ec;
+    private double suma;
+    private final double[] integra = new double[2000];
+    private final double[] erro = new double[2000];
+    private double a;
+    private double b;
+    private double h;
+    private double j;
+    private double m;
+    private double a1;
+    private double b1;
+    private double m1;
 
     /**
      * Creates new form FormIntegracion
@@ -41,6 +76,10 @@ public class FormIntegracion extends javax.swing.JFrame {
         jtfTextAG = new javax.swing.JTextField();
         jScrollPane1 = new javax.swing.JScrollPane();
         jtSalida = new javax.swing.JTable();
+        jplChart = new javax.swing.JPanel();
+        jbtnCalcular = new javax.swing.JButton();
+        jbtnGraficar = new javax.swing.JButton();
+        jbtnLimpiar = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -74,13 +113,46 @@ public class FormIntegracion extends javax.swing.JFrame {
         });
         jScrollPane1.setViewportView(jtSalida);
 
+        javax.swing.GroupLayout jplChartLayout = new javax.swing.GroupLayout(jplChart);
+        jplChart.setLayout(jplChartLayout);
+        jplChartLayout.setHorizontalGroup(
+            jplChartLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 396, Short.MAX_VALUE)
+        );
+        jplChartLayout.setVerticalGroup(
+            jplChartLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 0, Short.MAX_VALUE)
+        );
+
+        jbtnCalcular.setText("Calcular");
+        jbtnCalcular.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jbtnCalcularActionPerformed(evt);
+            }
+        });
+
+        jbtnGraficar.setText("Graficar");
+        jbtnGraficar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jbtnGraficarActionPerformed(evt);
+            }
+        });
+
+        jbtnLimpiar.setText("Limpiar");
+        jbtnLimpiar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jbtnLimpiarActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGap(15, 15, 15)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addContainerGap()
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                    .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE)
                     .addGroup(layout.createSequentialGroup()
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
@@ -101,44 +173,188 @@ public class FormIntegracion extends javax.swing.JFrame {
                             .addComponent(jtfTextFunction, javax.swing.GroupLayout.PREFERRED_SIZE, 159, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
                                 .addComponent(jtfTextA, javax.swing.GroupLayout.Alignment.LEADING)
-                                .addComponent(jtfTextB, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.PREFERRED_SIZE, 45, javax.swing.GroupLayout.PREFERRED_SIZE))))
-                    .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 330, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap(261, Short.MAX_VALUE))
+                                .addComponent(jtfTextB, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.PREFERRED_SIZE, 45, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addGap(18, 18, 18)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                            .addComponent(jbtnGraficar, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(jbtnCalcular, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(jbtnLimpiar, javax.swing.GroupLayout.PREFERRED_SIZE, 81, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                .addGap(18, 18, 18)
+                .addComponent(jplChart, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap())
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGap(44, 44, 44)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jlblFunction)
-                    .addComponent(jtfTextFunction, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(18, 18, 18)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jtfTextA, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jlblTextA))
-                .addGap(18, 18, 18)
+                .addGap(40, 40, 40)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jtfTextB, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addGroup(layout.createSequentialGroup()
-                        .addGap(4, 4, 4)
-                        .addComponent(jlblTextB, javax.swing.GroupLayout.PREFERRED_SIZE, 20, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addGap(18, 18, 18)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jlblCifras)
-                    .addComponent(jtfTextC, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(18, 18, 18)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jlblRangoG)
-                    .addComponent(jtfTextBG, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jLabel1)
-                    .addComponent(jtfTextAG, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(18, 18, 18)
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 180, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(20, Short.MAX_VALUE))
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(jlblFunction)
+                            .addComponent(jtfTextFunction, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jbtnCalcular))
+                        .addGap(18, 18, 18)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(jtfTextA, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jlblTextA)
+                            .addComponent(jbtnGraficar))
+                        .addGap(18, 18, 18)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                                .addComponent(jtfTextB, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addComponent(jbtnLimpiar))
+                            .addGroup(layout.createSequentialGroup()
+                                .addGap(4, 4, 4)
+                                .addComponent(jlblTextB, javax.swing.GroupLayout.PREFERRED_SIZE, 20, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addGap(18, 18, 18)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(jlblCifras)
+                            .addComponent(jtfTextC, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGap(18, 18, 18)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(jlblRangoG)
+                            .addComponent(jtfTextBG, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jLabel1)
+                            .addComponent(jtfTextAG, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 186, Short.MAX_VALUE))
+                    .addComponent(jplChart, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addContainerGap())
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
+
+    private void displayChart(XYDataset functionDataset) {
+        createChart(functionDataset);
+
+        ChartPanel chartPanel = new ChartPanel(chart) {
+
+            @Override
+            public Dimension getPreferredSize() {
+                return new Dimension(396, 408);
+            }
+        };
+        chartPanel.setBorder(BorderFactory.createEmptyBorder(15, 15, 15, 15));
+        chartPanel.setBackground(Color.white);
+        add(chartPanel);
+
+        jplChart.setLayout(new java.awt.BorderLayout());
+        jplChart.add(chartPanel, BorderLayout.CENTER);
+        jplChart.validate();
+    }
+
+    private void createChart(XYDataset functionDataset) {
+
+        XYPlot plot = new XYPlot();
+        plot.setDataset(0, functionDataset);
+        plot.setRenderer(0, new XYLineAndShapeRenderer(true, false));
+        plot.setDomainAxis(0, new NumberAxis("Y"));
+        plot.setRangeAxis(0, new NumberAxis("X"));
+        plot.mapDatasetToDomainAxis(0, 0);
+        plot.mapDatasetToRangeAxis(0, 0);
+
+        plot.setBackgroundPaint(Color.WHITE);
+
+        chart = new JFreeChart("Gráfica", JFreeChart.DEFAULT_TITLE_FONT, plot, true);
+        chart.getLegend().setFrame(BlockBorder.NONE);
+    }
+
+    private double f(double x) {
+        Argument varX = new Argument("x = " + x);
+        Expression e = new Expression(jtfTextFunction.getText(), varX);
+        double result = e.calculate();
+        return result;
+    }
+
+    private void jbtnCalcularActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbtnCalcularActionPerformed
+        // TODO add your handling code here:
+        a = Double.parseDouble(jtfTextA.getText());
+        b = Double.parseDouble(jtfTextB.getText());
+        c = Integer.parseInt(jtfTextC.getText());
+        n = 100;
+        ec = 0.5 * Math.pow(10, -c);
+        redon = Math.pow(10, c + 2);
+        erro[i] = 1;
+
+        h = (b - a) / n;
+        suma = 0;
+        for (k = 0; k <= n - 1; k++) {
+            suma = suma + (h * f(a + k * h));
+        }
+        integra[i] = suma;
+
+        // imprimir los renglones
+        DefaultTableModel model = (DefaultTableModel) jtSalida.getModel();
+
+        model.addRow(new Object[]{
+            n,
+            (Math.round(integra[i] * redon) / redon),
+            (Math.round(erro[i] * redon) / redon)
+        });
+
+        while (erro[i] > ec) {
+            n = n + 100;
+            i++;
+
+            h = (b - a) / n;
+            suma = 0;
+            for (k = 0; k <= n - 1; k++) {
+                suma = suma + (h * f(a + k * h));
+            }
+            integra[i] = suma;
+
+            erro[i] = Math.abs((integra[i] - integra[i - 1]) / integra[i]);
+
+            model.addRow(new Object[]{
+                n,
+                (Math.round(integra[i] * redon) / redon),
+                (Math.round(erro[i] * redon) / redon)
+            });
+        }
+    }//GEN-LAST:event_jbtnCalcularActionPerformed
+
+    private void jbtnLimpiarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbtnLimpiarActionPerformed
+        // TODO add your handling code here:
+        DefaultTableModel model = (DefaultTableModel) jtSalida.getModel();
+
+        model.setRowCount(0);
+
+        jtfTextA.setText("");
+        jtfTextB.setText("");
+        jtfTextC.setText("");
+        jtfTextAG.setText("");
+        jtfTextBG.setText("");
+        jtfTextFunction.setText("");
+    }//GEN-LAST:event_jbtnLimpiarActionPerformed
+
+    private void jbtnGraficarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbtnGraficarActionPerformed
+        // TODO add your handling code here:
+        a1 = Double.parseDouble(jtfTextAG.getText());
+        b1 = Double.parseDouble(jtfTextBG.getText());
+
+        j = a1;
+
+        XYSeries series0 = new XYSeries("Function", false);
+        XYSeries series1 = new XYSeries("Area", false);
+
+        while (j <= b1) {
+            series0.add((Math.round(j * 10.0) / 10.0), f(j));
+            j = j + 0.1;
+        }
+
+        m = a;
+
+        while (m <= b) {
+            series1.add((Math.round(m * 10.0) / 10.0), f(m));
+            m = m + 0.1;
+        }
+
+        XYSeriesCollection dataset = new XYSeriesCollection();
+        dataset.addSeries(series0);
+        dataset.addSeries(series1);
+        displayChart(dataset);
+    }//GEN-LAST:event_jbtnGraficarActionPerformed
 
     /**
      * @param args the command line arguments
@@ -169,14 +385,19 @@ public class FormIntegracion extends javax.swing.JFrame {
         });
     }
 
+    private JFreeChart chart;
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JLabel jLabel1;
     private javax.swing.JScrollPane jScrollPane1;
+    private javax.swing.JButton jbtnCalcular;
+    private javax.swing.JButton jbtnGraficar;
+    private javax.swing.JButton jbtnLimpiar;
     private javax.swing.JLabel jlblCifras;
     private javax.swing.JLabel jlblFunction;
     private javax.swing.JLabel jlblRangoG;
     private javax.swing.JLabel jlblTextA;
     private javax.swing.JLabel jlblTextB;
+    private javax.swing.JPanel jplChart;
     private javax.swing.JTable jtSalida;
     private javax.swing.JTextField jtfTextA;
     private javax.swing.JTextField jtfTextAG;
