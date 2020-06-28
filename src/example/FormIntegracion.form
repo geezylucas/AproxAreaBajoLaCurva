@@ -25,17 +25,15 @@
       <Group type="103" groupAlignment="0" attributes="0">
           <Group type="102" alignment="0" attributes="0">
               <EmptySpace max="-2" attributes="0"/>
-              <Group type="103" groupAlignment="0" max="-2" attributes="0">
-                  <Component id="jScrollPane1" pref="0" max="32767" attributes="0"/>
-                  <Group type="102" alignment="0" attributes="0">
-                      <Group type="103" groupAlignment="0" attributes="0">
-                          <Group type="103" alignment="0" groupAlignment="0" max="-2" attributes="0">
-                              <Component id="jlblCifras" alignment="0" min="-2" pref="86" max="-2" attributes="0"/>
-                              <Component id="jlblTextA" alignment="0" max="32767" attributes="0"/>
-                              <Component id="jlblFunction" alignment="0" max="32767" attributes="0"/>
-                              <Component id="jlblTextB" alignment="0" min="-2" pref="92" max="-2" attributes="0"/>
-                          </Group>
-                          <Component id="jlblRangoG" alignment="0" min="-2" pref="86" max="-2" attributes="0"/>
+              <Group type="103" groupAlignment="1" attributes="0">
+                  <Component id="jScrollPane1" min="-2" pref="368" max="-2" attributes="0"/>
+                  <Group type="102" attributes="0">
+                      <Group type="103" groupAlignment="0" max="-2" attributes="0">
+                          <Component id="jlblRangoG" alignment="1" max="32767" attributes="0"/>
+                          <Component id="jlblCifras" alignment="0" max="32767" attributes="0"/>
+                          <Component id="jlblTextA" alignment="0" max="32767" attributes="0"/>
+                          <Component id="jlblTextB" alignment="0" max="32767" attributes="0"/>
+                          <Component id="jlblFunction" alignment="0" pref="110" max="32767" attributes="0"/>
                       </Group>
                       <EmptySpace type="separate" max="-2" attributes="0"/>
                       <Group type="103" groupAlignment="0" attributes="0">
@@ -47,22 +45,20 @@
                               <Component id="jtfTextBG" min="-2" pref="45" max="-2" attributes="0"/>
                           </Group>
                           <Component id="jtfTextC" min="-2" pref="45" max="-2" attributes="0"/>
-                          <Component id="jtfTextFunction" alignment="0" min="-2" pref="159" max="-2" attributes="0"/>
-                          <Group type="103" alignment="0" groupAlignment="1" max="-2" attributes="0">
-                              <Component id="jtfTextA" alignment="0" max="32767" attributes="0"/>
-                              <Component id="jtfTextB" alignment="0" min="-2" pref="45" max="-2" attributes="0"/>
-                          </Group>
+                          <Component id="jtfTextB" min="-2" pref="45" max="-2" attributes="0"/>
+                          <Component id="jtfTextA" min="-2" pref="45" max="-2" attributes="0"/>
+                          <Component id="jtfTextFunction" min="-2" pref="133" max="-2" attributes="0"/>
                       </Group>
-                      <EmptySpace type="separate" max="-2" attributes="0"/>
-                      <Group type="103" groupAlignment="1" max="-2" attributes="0">
+                      <EmptySpace min="-2" pref="26" max="-2" attributes="0"/>
+                      <Group type="103" groupAlignment="0" max="-2" attributes="0">
+                          <Component id="jbtnLimpiar" alignment="1" max="32767" attributes="0"/>
                           <Component id="jbtnGraficar" alignment="1" max="32767" attributes="0"/>
                           <Component id="jbtnCalcular" alignment="1" max="32767" attributes="0"/>
-                          <Component id="jbtnLimpiar" alignment="1" min="-2" pref="81" max="-2" attributes="0"/>
                       </Group>
                   </Group>
               </Group>
-              <EmptySpace type="separate" max="-2" attributes="0"/>
-              <Component id="jplChart" min="-2" max="-2" attributes="0"/>
+              <EmptySpace max="-2" attributes="0"/>
+              <Component id="jplChart" max="32767" attributes="0"/>
               <EmptySpace max="-2" attributes="0"/>
           </Group>
       </Group>
@@ -75,8 +71,8 @@
                   <Group type="102" attributes="0">
                       <Group type="103" groupAlignment="3" attributes="0">
                           <Component id="jlblFunction" alignment="3" min="-2" max="-2" attributes="0"/>
-                          <Component id="jtfTextFunction" alignment="3" min="-2" max="-2" attributes="0"/>
                           <Component id="jbtnCalcular" alignment="3" min="-2" max="-2" attributes="0"/>
+                          <Component id="jtfTextFunction" alignment="3" min="-2" max="-2" attributes="0"/>
                       </Group>
                       <EmptySpace type="separate" max="-2" attributes="0"/>
                       <Group type="103" groupAlignment="3" attributes="0">
@@ -84,31 +80,26 @@
                           <Component id="jlblTextA" alignment="3" min="-2" max="-2" attributes="0"/>
                           <Component id="jbtnGraficar" alignment="3" min="-2" max="-2" attributes="0"/>
                       </Group>
-                      <EmptySpace type="separate" max="-2" attributes="0"/>
-                      <Group type="103" groupAlignment="0" attributes="0">
-                          <Group type="103" groupAlignment="3" attributes="0">
-                              <Component id="jtfTextB" alignment="3" min="-2" max="-2" attributes="0"/>
-                              <Component id="jbtnLimpiar" alignment="3" min="-2" max="-2" attributes="0"/>
-                          </Group>
-                          <Group type="102" attributes="0">
-                              <EmptySpace min="4" pref="4" max="-2" attributes="0"/>
-                              <Component id="jlblTextB" min="-2" pref="20" max="-2" attributes="0"/>
-                          </Group>
+                      <EmptySpace min="-2" pref="16" max="-2" attributes="0"/>
+                      <Group type="103" groupAlignment="3" attributes="0">
+                          <Component id="jlblTextB" alignment="3" min="-2" pref="20" max="-2" attributes="0"/>
+                          <Component id="jbtnLimpiar" alignment="3" min="-2" max="-2" attributes="0"/>
+                          <Component id="jtfTextB" alignment="3" min="-2" max="-2" attributes="0"/>
                       </Group>
-                      <EmptySpace type="separate" max="-2" attributes="0"/>
+                      <EmptySpace min="-2" pref="20" max="-2" attributes="0"/>
                       <Group type="103" groupAlignment="3" attributes="0">
                           <Component id="jlblCifras" alignment="3" min="-2" max="-2" attributes="0"/>
                           <Component id="jtfTextC" alignment="3" min="-2" max="-2" attributes="0"/>
                       </Group>
-                      <EmptySpace type="separate" max="-2" attributes="0"/>
+                      <EmptySpace min="-2" pref="24" max="-2" attributes="0"/>
                       <Group type="103" groupAlignment="3" attributes="0">
                           <Component id="jlblRangoG" alignment="3" min="-2" max="-2" attributes="0"/>
                           <Component id="jtfTextBG" alignment="3" min="-2" max="-2" attributes="0"/>
                           <Component id="jLabel1" alignment="3" min="-2" max="-2" attributes="0"/>
                           <Component id="jtfTextAG" alignment="3" min="-2" max="-2" attributes="0"/>
                       </Group>
-                      <EmptySpace max="-2" attributes="0"/>
-                      <Component id="jScrollPane1" pref="186" max="32767" attributes="0"/>
+                      <EmptySpace type="separate" max="-2" attributes="0"/>
+                      <Component id="jScrollPane1" pref="166" max="32767" attributes="0"/>
                   </Group>
                   <Component id="jplChart" max="32767" attributes="0"/>
               </Group>
@@ -142,7 +133,7 @@
     <Component class="javax.swing.JLabel" name="jlblCifras">
       <Properties>
         <Property name="text" type="java.lang.String" editor="org.netbeans.modules.form.RADConnectionPropertyEditor">
-          <Connection code="&quot;&lt;html&gt;Dame cifras significativas:&lt;/html&gt;&quot;" type="code"/>
+          <Connection code="&quot;&lt;html&gt;Dame cifras&lt;br&gt;significativas:&lt;/html&gt;&quot;" type="code"/>
         </Property>
       </Properties>
     </Component>
@@ -211,7 +202,7 @@
       <Layout>
         <DimensionLayout dim="0">
           <Group type="103" groupAlignment="0" attributes="0">
-              <EmptySpace min="0" pref="396" max="32767" attributes="0"/>
+              <EmptySpace min="0" pref="408" max="32767" attributes="0"/>
           </Group>
         </DimensionLayout>
         <DimensionLayout dim="1">

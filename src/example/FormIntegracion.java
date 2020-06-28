@@ -10,9 +10,9 @@ import java.awt.Color;
 import java.awt.Dimension;
 import javax.swing.BorderFactory;
 import javax.swing.table.DefaultTableModel;
+import org.jfree.chart.ChartFactory;
 import org.jfree.chart.ChartPanel;
 import org.jfree.chart.JFreeChart;
-import org.jfree.chart.axis.NumberAxis;
 import org.jfree.chart.block.BlockBorder;
 import org.jfree.chart.plot.XYPlot;
 import org.jfree.chart.renderer.xy.XYLineAndShapeRenderer;
@@ -89,7 +89,7 @@ public class FormIntegracion extends javax.swing.JFrame {
 
         jlblTextB.setText("Dame b:");
 
-        jlblCifras.setText("<html>Dame cifras significativas:</html>");
+        jlblCifras.setText("<html>Dame cifras<br>significativas:</html>");
 
         jlblRangoG.setText("<html>Dame rango<br>de la gráfica:</html>");
 
@@ -117,7 +117,7 @@ public class FormIntegracion extends javax.swing.JFrame {
         jplChart.setLayout(jplChartLayout);
         jplChartLayout.setHorizontalGroup(
             jplChartLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 396, Short.MAX_VALUE)
+            .addGap(0, 408, Short.MAX_VALUE)
         );
         jplChartLayout.setVerticalGroup(
             jplChartLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -151,16 +151,15 @@ public class FormIntegracion extends javax.swing.JFrame {
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 368, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addGroup(layout.createSequentialGroup()
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                                .addComponent(jlblCifras, javax.swing.GroupLayout.PREFERRED_SIZE, 86, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addComponent(jlblTextA, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                .addComponent(jlblFunction, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                .addComponent(jlblTextB, javax.swing.GroupLayout.PREFERRED_SIZE, 92, javax.swing.GroupLayout.PREFERRED_SIZE))
-                            .addComponent(jlblRangoG, javax.swing.GroupLayout.PREFERRED_SIZE, 86, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                            .addComponent(jlblRangoG, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(jlblCifras, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(jlblTextA, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(jlblTextB, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(jlblFunction, javax.swing.GroupLayout.DEFAULT_SIZE, 110, Short.MAX_VALUE))
                         .addGap(18, 18, 18)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(layout.createSequentialGroup()
@@ -170,17 +169,16 @@ public class FormIntegracion extends javax.swing.JFrame {
                                 .addGap(18, 18, 18)
                                 .addComponent(jtfTextBG, javax.swing.GroupLayout.PREFERRED_SIZE, 45, javax.swing.GroupLayout.PREFERRED_SIZE))
                             .addComponent(jtfTextC, javax.swing.GroupLayout.PREFERRED_SIZE, 45, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jtfTextFunction, javax.swing.GroupLayout.PREFERRED_SIZE, 159, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                                .addComponent(jtfTextA, javax.swing.GroupLayout.Alignment.LEADING)
-                                .addComponent(jtfTextB, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.PREFERRED_SIZE, 45, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                        .addGap(18, 18, 18)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                            .addComponent(jbtnGraficar, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(jbtnCalcular, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(jbtnLimpiar, javax.swing.GroupLayout.PREFERRED_SIZE, 81, javax.swing.GroupLayout.PREFERRED_SIZE))))
-                .addGap(18, 18, 18)
-                .addComponent(jplChart, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jtfTextB, javax.swing.GroupLayout.PREFERRED_SIZE, 45, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jtfTextA, javax.swing.GroupLayout.PREFERRED_SIZE, 45, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jtfTextFunction, javax.swing.GroupLayout.PREFERRED_SIZE, 133, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGap(26, 26, 26)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                            .addComponent(jbtnLimpiar, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(jbtnGraficar, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(jbtnCalcular, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(jplChart, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addContainerGap())
         );
         layout.setVerticalGroup(
@@ -191,33 +189,30 @@ public class FormIntegracion extends javax.swing.JFrame {
                     .addGroup(layout.createSequentialGroup()
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(jlblFunction)
-                            .addComponent(jtfTextFunction, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jbtnCalcular))
+                            .addComponent(jbtnCalcular)
+                            .addComponent(jtfTextFunction, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addGap(18, 18, 18)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(jtfTextA, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(jlblTextA)
                             .addComponent(jbtnGraficar))
-                        .addGap(18, 18, 18)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                                .addComponent(jtfTextB, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addComponent(jbtnLimpiar))
-                            .addGroup(layout.createSequentialGroup()
-                                .addGap(4, 4, 4)
-                                .addComponent(jlblTextB, javax.swing.GroupLayout.PREFERRED_SIZE, 20, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                        .addGap(18, 18, 18)
+                        .addGap(16, 16, 16)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(jlblTextB, javax.swing.GroupLayout.PREFERRED_SIZE, 20, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jbtnLimpiar)
+                            .addComponent(jtfTextB, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGap(20, 20, 20)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(jlblCifras)
                             .addComponent(jtfTextC, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addGap(18, 18, 18)
+                        .addGap(24, 24, 24)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(jlblRangoG)
                             .addComponent(jtfTextBG, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(jLabel1)
                             .addComponent(jtfTextAG, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 186, Short.MAX_VALUE))
+                        .addGap(18, 18, 18)
+                        .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 166, Short.MAX_VALUE))
                     .addComponent(jplChart, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                 .addContainerGap())
         );
@@ -225,8 +220,8 @@ public class FormIntegracion extends javax.swing.JFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void displayChart(XYDataset functionDataset) {
-        createChart(functionDataset);
+    private void displayChart(XYDataset dataset0, XYDataset dataset1) {
+        createChart(dataset0, dataset1);
 
         ChartPanel chartPanel = new ChartPanel(chart) {
 
@@ -244,20 +239,31 @@ public class FormIntegracion extends javax.swing.JFrame {
         jplChart.validate();
     }
 
-    private void createChart(XYDataset functionDataset) {
+    private void createChart(XYDataset dataset0, XYDataset dataset1) {
 
-        XYPlot plot = new XYPlot();
-        plot.setDataset(0, functionDataset);
-        plot.setRenderer(0, new XYLineAndShapeRenderer(true, false));
-        plot.setDomainAxis(0, new NumberAxis("Y"));
-        plot.setRangeAxis(0, new NumberAxis("X"));
-        plot.mapDatasetToDomainAxis(0, 0);
-        plot.mapDatasetToRangeAxis(0, 0);
+        JFreeChart chartDirty = ChartFactory.createXYStepAreaChart(
+                "XY Area", // Chart Title
+                null, // X-Axis Label
+                null, // Y-Axis Label
+                dataset0
+        );
+        XYPlot plot = (XYPlot) chartDirty.getPlot();
+
+        XYLineAndShapeRenderer render1 = new XYLineAndShapeRenderer(true, false);
+        plot.setDataset(1, dataset1);
+        plot.setRenderer(1, render1);
 
         plot.setBackgroundPaint(Color.WHITE);
 
+        plot.setRangeGridlinesVisible(true);
+        plot.setRangeGridlinePaint(Color.BLACK);
+
+        plot.setDomainGridlinesVisible(true);
+        plot.setDomainGridlinePaint(Color.BLACK);
+
+        chartDirty.getLegend().setFrame(BlockBorder.NONE);
+
         chart = new JFreeChart("Gráfica", JFreeChart.DEFAULT_TITLE_FONT, plot, true);
-        chart.getLegend().setFrame(BlockBorder.NONE);
     }
 
     private double f(double x) {
@@ -335,25 +341,29 @@ public class FormIntegracion extends javax.swing.JFrame {
 
         j = a1;
 
-        XYSeries series0 = new XYSeries("Function", false);
-        XYSeries series1 = new XYSeries("Area", false);
+        XYSeriesCollection dataset0 = new XYSeriesCollection();
+        XYSeriesCollection dataset1 = new XYSeriesCollection();
+
+        XYSeries seriesFunction = new XYSeries("Function", false);
+        XYSeries seriesArea = new XYSeries("Area", false);
 
         while (j <= b1) {
-            series0.add((Math.round(j * 10.0) / 10.0), f(j));
+            seriesFunction.add((Math.round(j * 10.0) / 10.0), f(j));
             j = j + 0.1;
         }
 
         m = a;
 
         while (m <= b) {
-            series1.add((Math.round(m * 10.0) / 10.0), f(m));
+            seriesArea.add((Math.round(m * 10.0) / 10.0), f(m));
             m = m + 0.1;
         }
 
-        XYSeriesCollection dataset = new XYSeriesCollection();
-        dataset.addSeries(series0);
-        dataset.addSeries(series1);
-        displayChart(dataset);
+        dataset0.addSeries(seriesFunction);
+        dataset1.addSeries(seriesArea);
+        
+        jplChart.removeAll();
+        displayChart(dataset1, dataset0);
     }//GEN-LAST:event_jbtnGraficarActionPerformed
 
     /**
