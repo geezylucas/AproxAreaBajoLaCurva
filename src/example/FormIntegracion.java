@@ -62,6 +62,7 @@ public class FormIntegracion extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
+        btngSoluciones = new javax.swing.ButtonGroup();
         jtfTextFunction = new javax.swing.JTextField();
         jtfTextA = new javax.swing.JTextField();
         jtfTextB = new javax.swing.JTextField();
@@ -80,6 +81,10 @@ public class FormIntegracion extends javax.swing.JFrame {
         jbtnCalcular = new javax.swing.JButton();
         jbtnGraficar = new javax.swing.JButton();
         jbtnLimpiar = new javax.swing.JButton();
+        jLabel2 = new javax.swing.JLabel();
+        jrbtnRectangulos = new javax.swing.JRadioButton();
+        jrbtnTrapecios = new javax.swing.JRadioButton();
+        jrbtnSimpson = new javax.swing.JRadioButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -145,46 +150,74 @@ public class FormIntegracion extends javax.swing.JFrame {
             }
         });
 
+        jLabel2.setFont(new java.awt.Font("Lucida Grande", 1, 20)); // NOI18N
+        jLabel2.setText("Aproximación de área bajo la curva");
+
+        btngSoluciones.add(jrbtnRectangulos);
+        jrbtnRectangulos.setText("Rectángulos");
+
+        btngSoluciones.add(jrbtnTrapecios);
+        jrbtnTrapecios.setText("Trapecios");
+
+        btngSoluciones.add(jrbtnSimpson);
+        jrbtnSimpson.setText("Simpson 1/3");
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 368, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                            .addComponent(jlblRangoG, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(jlblCifras, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(jlblTextA, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(jlblTextB, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(jlblFunction, javax.swing.GroupLayout.DEFAULT_SIZE, 110, Short.MAX_VALUE))
-                        .addGap(18, 18, 18)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                            .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 368, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addGroup(layout.createSequentialGroup()
-                                .addComponent(jtfTextAG, javax.swing.GroupLayout.PREFERRED_SIZE, 45, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                                    .addComponent(jlblRangoG, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                    .addComponent(jlblCifras, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                    .addComponent(jlblTextA, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                    .addComponent(jlblTextB, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                    .addComponent(jlblFunction, javax.swing.GroupLayout.DEFAULT_SIZE, 110, Short.MAX_VALUE))
                                 .addGap(18, 18, 18)
-                                .addComponent(jLabel1)
-                                .addGap(18, 18, 18)
-                                .addComponent(jtfTextBG, javax.swing.GroupLayout.PREFERRED_SIZE, 45, javax.swing.GroupLayout.PREFERRED_SIZE))
-                            .addComponent(jtfTextC, javax.swing.GroupLayout.PREFERRED_SIZE, 45, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jtfTextB, javax.swing.GroupLayout.PREFERRED_SIZE, 45, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jtfTextA, javax.swing.GroupLayout.PREFERRED_SIZE, 45, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jtfTextFunction, javax.swing.GroupLayout.PREFERRED_SIZE, 133, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addGap(26, 26, 26)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                            .addComponent(jbtnLimpiar, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(jbtnGraficar, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(jbtnCalcular, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jplChart, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addGroup(layout.createSequentialGroup()
+                                        .addComponent(jtfTextAG, javax.swing.GroupLayout.PREFERRED_SIZE, 45, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                        .addGap(18, 18, 18)
+                                        .addComponent(jLabel1)
+                                        .addGap(18, 18, 18)
+                                        .addComponent(jtfTextBG, javax.swing.GroupLayout.PREFERRED_SIZE, 45, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                    .addComponent(jtfTextC, javax.swing.GroupLayout.PREFERRED_SIZE, 45, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addComponent(jtfTextB, javax.swing.GroupLayout.PREFERRED_SIZE, 45, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addComponent(jtfTextA, javax.swing.GroupLayout.PREFERRED_SIZE, 45, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addComponent(jtfTextFunction, javax.swing.GroupLayout.PREFERRED_SIZE, 133, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                .addGap(26, 26, 26)
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                                    .addComponent(jbtnLimpiar, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                    .addComponent(jbtnGraficar, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                    .addComponent(jbtnCalcular, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(jplChart, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                    .addGroup(layout.createSequentialGroup()
+                        .addComponent(jLabel2)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(jrbtnSimpson)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(jrbtnTrapecios)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(jrbtnRectangulos)))
                 .addContainerGap())
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGap(40, 40, 40)
+                .addContainerGap()
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 43, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jrbtnRectangulos)
+                    .addComponent(jrbtnTrapecios)
+                    .addComponent(jrbtnSimpson))
+                .addGap(18, 18, 18)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
@@ -212,7 +245,7 @@ public class FormIntegracion extends javax.swing.JFrame {
                             .addComponent(jLabel1)
                             .addComponent(jtfTextAG, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addGap(18, 18, 18)
-                        .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 166, Short.MAX_VALUE))
+                        .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 202, Short.MAX_VALUE))
                     .addComponent(jplChart, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                 .addContainerGap())
         );
@@ -275,24 +308,48 @@ public class FormIntegracion extends javax.swing.JFrame {
 
     private void jbtnCalcularActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbtnCalcularActionPerformed
         // TODO add your handling code here:
+        DefaultTableModel model = (DefaultTableModel) jtSalida.getModel();
+        model.setRowCount(0);
+
         a = Double.parseDouble(jtfTextA.getText());
         b = Double.parseDouble(jtfTextB.getText());
         c = Integer.parseInt(jtfTextC.getText());
-        n = 100;
         ec = 0.5 * Math.pow(10, -c);
         redon = Math.pow(10, c + 2);
         erro[i] = 1;
-
-        h = (b - a) / n;
         suma = 0;
-        for (k = 0; k <= n - 1; k++) {
-            suma = suma + (h * f(a + k * h));
+
+        if (jrbtnRectangulos.isSelected()) {
+            // Rectangulos
+            n = 100;
+            h = (b - a) / n;
+            
+            for (k = 0; k <= n - 1; k++) {
+                suma = suma + h * f(a + k * h);
+            }
+        } else if (jrbtnTrapecios.isSelected()) {
+            // Trapecios
+            n = 10;
+            h = (b - a) / n;
+            
+            for (k = 1; k <= n - 1; k++) {
+                suma = suma + f(a + k * h);
+            }
+            suma = (h / 2) * (f(a) + f(b) + (2 * suma));
+        } else if (jrbtnSimpson.isSelected()) {
+            // Simpson
+            n = 4;
+            h = (b - a) / (2 * n);
+            
+            for (k = 1; k <= n; k++) {
+                suma = suma + ((2 * f(a + (((2 * k) - 1) * h))) + f(a + (2 * k * h)));
+            }
+            suma = (h / 3) * (f(a) - f(b) + (2 * suma));
+
         }
+
         integra[i] = suma;
-
         // imprimir los renglones
-        DefaultTableModel model = (DefaultTableModel) jtSalida.getModel();
-
         model.addRow(new Object[]{
             n,
             (Math.round(integra[i] * redon) / redon),
@@ -300,16 +357,35 @@ public class FormIntegracion extends javax.swing.JFrame {
         });
 
         while (erro[i] > ec) {
-            n = n + 100;
             i++;
-
-            h = (b - a) / n;
             suma = 0;
-            for (k = 0; k <= n - 1; k++) {
-                suma = suma + (h * f(a + k * h));
-            }
-            integra[i] = suma;
 
+            if (jrbtnRectangulos.isSelected()) {
+                n = n + 100;
+                h = (b - a) / n;
+                
+                for (k = 0; k <= n - 1; k++) {
+                    suma = suma + h * f(a + k * h);
+                }
+            } else if (jrbtnTrapecios.isSelected()) {
+                n = n + 10;
+                h = (b - a) / n;
+                
+                for (k = 1; k <= n - 1; k++) {
+                    suma = suma + f(a + k * h);
+                }
+                suma = (h / 2) * (f(a) + f(b) + (2 * suma));
+            } else if (jrbtnSimpson.isSelected()) {
+                n = n + 4;
+                h = (b - a) / (2 * n);
+                
+                for (k = 1; k <= n; k++) {
+                    suma = suma + ((2 * f(a + (((2 * k) - 1) * h))) + f(a + (2 * k * h)));
+                }
+                suma = (h / 3) * (f(a) - f(b) + (2 * suma));
+            }
+
+            integra[i] = suma;
             erro[i] = Math.abs((integra[i] - integra[i - 1]) / integra[i]);
 
             model.addRow(new Object[]{
@@ -361,7 +437,7 @@ public class FormIntegracion extends javax.swing.JFrame {
 
         dataset0.addSeries(seriesFunction);
         dataset1.addSeries(seriesArea);
-        
+
         jplChart.removeAll();
         displayChart(dataset1, dataset0);
     }//GEN-LAST:event_jbtnGraficarActionPerformed
@@ -397,7 +473,9 @@ public class FormIntegracion extends javax.swing.JFrame {
 
     private JFreeChart chart;
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.ButtonGroup btngSoluciones;
     private javax.swing.JLabel jLabel1;
+    private javax.swing.JLabel jLabel2;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JButton jbtnCalcular;
     private javax.swing.JButton jbtnGraficar;
@@ -408,6 +486,9 @@ public class FormIntegracion extends javax.swing.JFrame {
     private javax.swing.JLabel jlblTextA;
     private javax.swing.JLabel jlblTextB;
     private javax.swing.JPanel jplChart;
+    private javax.swing.JRadioButton jrbtnRectangulos;
+    private javax.swing.JRadioButton jrbtnSimpson;
+    private javax.swing.JRadioButton jrbtnTrapecios;
     private javax.swing.JTable jtSalida;
     private javax.swing.JTextField jtfTextA;
     private javax.swing.JTextField jtfTextAG;
