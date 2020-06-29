@@ -301,6 +301,7 @@ public class FormIntegracion extends javax.swing.JFrame {
 
     private double f(double x) {
         Argument varX = new Argument("x = " + x);
+
         Expression e = new Expression(jtfTextFunction.getText(), varX);
         double result = e.calculate();
         return result;
@@ -323,7 +324,7 @@ public class FormIntegracion extends javax.swing.JFrame {
             // Rectangulos
             n = 100;
             h = (b - a) / n;
-            
+
             for (k = 0; k <= n - 1; k++) {
                 suma = suma + h * f(a + k * h);
             }
@@ -331,7 +332,7 @@ public class FormIntegracion extends javax.swing.JFrame {
             // Trapecios
             n = 10;
             h = (b - a) / n;
-            
+
             for (k = 1; k <= n - 1; k++) {
                 suma = suma + f(a + k * h);
             }
@@ -340,7 +341,7 @@ public class FormIntegracion extends javax.swing.JFrame {
             // Simpson
             n = 4;
             h = (b - a) / (2 * n);
-            
+
             for (k = 1; k <= n; k++) {
                 suma = suma + ((2 * f(a + (((2 * k) - 1) * h))) + f(a + (2 * k * h)));
             }
@@ -363,14 +364,14 @@ public class FormIntegracion extends javax.swing.JFrame {
             if (jrbtnRectangulos.isSelected()) {
                 n = n + 100;
                 h = (b - a) / n;
-                
+
                 for (k = 0; k <= n - 1; k++) {
                     suma = suma + h * f(a + k * h);
                 }
             } else if (jrbtnTrapecios.isSelected()) {
                 n = n + 10;
                 h = (b - a) / n;
-                
+
                 for (k = 1; k <= n - 1; k++) {
                     suma = suma + f(a + k * h);
                 }
@@ -378,7 +379,7 @@ public class FormIntegracion extends javax.swing.JFrame {
             } else if (jrbtnSimpson.isSelected()) {
                 n = n + 4;
                 h = (b - a) / (2 * n);
-                
+
                 for (k = 1; k <= n; k++) {
                     suma = suma + ((2 * f(a + (((2 * k) - 1) * h))) + f(a + (2 * k * h)));
                 }
